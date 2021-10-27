@@ -1,0 +1,79 @@
+# entities  
+#   author: name, email
+#   blog: message, timeOfCreation, comments, likes 
+
+type Query {
+  show info
+  info: String!
+
+  # read blogs
+  feed: Feed!
+}
+
+type Mutation {
+  # create blog
+  createBlogPost(postText: String!):BlogPost!
+
+  # update blog 
+  updateBlogPost(blogPostId: ID!, postText: String!):BlogPost
+
+  # delete blog
+  deleteBlogPost(blogPostId: ID!) : BlogPost!
+
+  # like blog
+  likeBlogPost(blogPostId: ID!): Like!
+
+  # unlike blog post
+  unlikeBlogPost(blogPostId: ID!): Like!
+
+  # Comment on blog
+  comment(blogPostId: ID!):Comment!
+
+  # Delete comment on blog
+  deleteComment(commentId: ID!): Comment!
+
+  # Reply comment 
+  replyComment(commentId:ID!, message: String!):Reply!
+
+}
+
+type Feed {
+  posts: [BlogPost!]!
+}
+
+type User {
+  id: ID!
+  name:String!
+  email:String!
+}
+
+type BlogPost {
+  id: ID!
+  postText: String!
+  postedBy: Author!
+  comments: [Comment!]!
+  replies: [Reply!]!
+  createdAt: DateTime
+}
+
+
+type Comment {
+  id:ID!
+  message: String!
+  postedBy: Author! | User!
+}
+
+type Reply {
+  id:ID!
+  message: String!
+  postedBy: Author! | User!
+}
+
+type Like {
+  id:ID!
+  post: BlogPost!
+  user: User! | User!
+}
+
+
+scalar DateTime
