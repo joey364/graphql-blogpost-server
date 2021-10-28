@@ -1,6 +1,6 @@
-# entities  
+# entities
 #   author: name, email
-#   blog: message, timeOfCreation, comments, likes 
+#   blog: message, timeOfCreation, comments, likes
 
 type Query {
   # show info
@@ -8,17 +8,20 @@ type Query {
 
   # read blogs
   feed: Feed!
+
+  # find uesr
+  user(userId: ID!): User!
 }
 
 type Mutation {
   # create blog
-  createBlogPost(postText: String!):BlogPost!
+  createBlogPost(postText: String!): BlogPost!
 
-  # update blog 
-  updateBlogPost(blogPostId: ID!, postText: String!):BlogPost
+  # update blog
+  updateBlogPost(blogPostId: ID!, postText: String!): BlogPost
 
   # delete blog
-  deleteBlogPost(blogPostId: ID!) : BlogPost!
+  deleteBlogPost(blogPostId: ID!): BlogPost!
 
   # like blog
   likeBlogPost(blogPostId: ID!): Like!
@@ -27,14 +30,19 @@ type Mutation {
   unlikeBlogPost(blogPostId: ID!): Like!
 
   # Comment on blog
-  comment(blogPostId: ID!):Comment!
+  comment(blogPostId: ID!): Comment!
 
   # Delete comment on blog
   deleteComment(commentId: ID!): Comment!
 
-  # Reply comment 
-  replyComment(commentId:ID!, message: String!):Reply!
+  # Reply comment
+  replyComment(commentId: ID!, message: String!): Reply!
 
+  # Create user
+  createUser(name: String!, email: String!): User!
+
+  # Delete user 
+  deleteUser(userId: ID!): User!
 }
 
 type Feed {
@@ -46,46 +54,39 @@ type User {
   id: ID!
   name: String!
   email: String!
-}
-
-
-type Author {
-  id: ID!
-  name: String!
-  email: String!
   posts: [BlogPost!]!
-
 }
 
 type BlogPost {
   id: ID!
   postText: String!
-  postedBy: Author!
+  postedBy: User!
   comments: [Comment!]!
-  replies: [Reply!]!
+  likes: Like!
   createdAt: DateTime
 }
 
-
 type Comment {
-  id:ID!
+  id: ID!
   message: String!
-  postedBy: Author!
+  post: BlogPost!
+  replies: [Reply!]!
+  postedBy: User!
   createdAt: DateTime
 }
 
 type Reply {
-  id:ID!
+  id: ID!
   message: String!
-  postedBy: Author!
+  post: BlogPost!
+  postedBy: User!
   createdAt: DateTime
 }
 
 type Like {
-  id:ID!
+  id: ID!
   post: BlogPost!
-  user: Author! 
+  user: User!
 }
-
 
 scalar DateTime
