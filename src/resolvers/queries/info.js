@@ -3,4 +3,4 @@ const info = {
   resolve: () => 'This is a BlogPost server',
 }
 
-exports = info
+module.exports = info

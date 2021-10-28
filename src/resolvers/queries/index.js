@@ -1,7 +1,7 @@
 const info = require('./info')
 const feed = require('./feed')
 
-exports = {
+module.exports = {
   info,
   feed,
 }

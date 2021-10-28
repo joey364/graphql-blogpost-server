@@ -6,4 +6,4 @@ const feed = {
   },
 }
 
-exports = feed
+module.exports = feed
