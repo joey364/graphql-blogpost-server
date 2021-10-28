@@ -1,9 +1,18 @@
 {
-  "name": "graphql-blogpost-server",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+ "name": "graphql-blogpost-server",
+ "version": "1.0.0",
+ "main": "index.js",
+ "license": "MIT",
  "scripts": {
-  "dev": "nodemon index.js"
+  "dev": "nodemon src/index.js"
+ },
+ "dependencies": {
+  "apollo-server": "^3.4.0",
+  "dotenv": "^10.0.0",
+  "graphql": "^15.7.1",
+  "mongoose": "^6.0.12"
+ },
+ "devDependencies": {
+  "nodemon": "^2.0.14"
  }
 }
