@@ -3,7 +3,7 @@
 #   blog: message, timeOfCreation, comments, likes 
 
 type Query {
-  show info
+  # show info
   info: String!
 
   # read blogs
@@ -39,12 +39,22 @@ type Mutation {
 
 type Feed {
   posts: [BlogPost!]!
+  count: Int
 }
 
 type User {
   id: ID!
-  name:String!
-  email:String!
+  name: String!
+  email: String!
+}
+
+
+type Author {
+  id: ID!
+  name: String!
+  email: String!
+  posts: [BlogPost!]!
+
 }
 
 type BlogPost {
@@ -60,19 +70,21 @@ type BlogPost {
 type Comment {
   id:ID!
   message: String!
-  postedBy: Author! | User!
+  postedBy: Author!
+  createdAt: DateTime
 }
 
 type Reply {
   id:ID!
   message: String!
-  postedBy: Author! | User!
+  postedBy: Author!
+  createdAt: DateTime
 }
 
 type Like {
   id:ID!
   post: BlogPost!
-  user: User! | User!
+  user: Author! 
 }
 
 
