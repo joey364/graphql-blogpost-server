@@ -5,6 +5,7 @@ require('dotenv').config()
 const { readFileSync } = require('fs')
 const path = require('path')
 
+const models = require('./models')
 
 const PORT = process.env.PORT ?? 4000
 
@@ -16,6 +17,11 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   path: '/',
+  context: ({ req, res }) => ({
+    ...req,
+    ...res,
+    models,
+  }),
 })
 
 mongoose.connect(process.env.DATABASE_URL, () => {
