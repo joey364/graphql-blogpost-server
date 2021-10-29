@@ -1,8 +1,14 @@
 const updateBlogPost = {
   description: 'Update a blog post',
-  resolve: () => {
-    // TODO implement updateBlogPost resolver
-    return null
+  resolve: async (parent, args, { models }) => {
+    const postToUpdate = await models.BlogPost.updateOne(
+      { _id: args.blogPostId },
+      {
+        $set: { postText: args.postText },
+        $currentDate: { lastModified: true },
+      }
+    )
+    return postToUpdate
   },
 }
 
