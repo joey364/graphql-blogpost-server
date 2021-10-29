@@ -1,18 +1,17 @@
-
 const post = {
   description: 'Return info on post',
-  resolve: () => {
-    // TODO return post info
-    return null
-  }
+  resolve: async (parent, args, { models }) => {
+    const postParent = models.BlogPost.find({ _id: parent._id })
+    return postParent
+  },
 }
 
 const user = {
-  description: 'Return info on user ',
-  resolve: () => {
-    // TODO return info on user 
-    return null
-  }
+  description: 'Return info on user',
+  resolve: async (parent, _args, { models }) => {
+    const userLikeInfo = models.User.find({ _id: parent._id })
+    return userLikeInfo
+  },
 }
 
 module.exports = {
