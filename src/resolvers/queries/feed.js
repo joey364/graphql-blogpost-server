@@ -1,8 +1,8 @@
 const feed = {
-  description: 'Return a list of posts',
-  resolve: () => {
-    // TODO implement feed resolver
-    return null
+  description: 'Return all blogposts',
+  resolve: async (_parent, _args, { models }) => {
+    const blogposts = await models.BlogPost.find()
+    return blogposts
   },
 }
 
