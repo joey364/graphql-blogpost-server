@@ -1,8 +1,10 @@
 const deleteUser = {
   description: 'Delete user',
-  resolve: () => {
-    // TODO implement DeleteUser
-    return null
+  resolve: async (parent, args, { models }) => {
+    const userToDelete = await models.User.deleteOne({
+      _id: args.userId,
+    })
+    return userToDelete
   },
 }
 
