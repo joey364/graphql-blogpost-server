@@ -1,8 +1,13 @@
 const createUser = {
   description: 'Create a user',
-  resolve: () => {
-    // TODO implement createUser
-    return null
+  resolve: async (_parent, args, { models }) => {
+    const newUser = new models.User({
+      name: args.name,
+      email: args.email,
+    })
+    await newUser.save()
+
+    return newUser
   },
 }
 
