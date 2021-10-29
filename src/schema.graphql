@@ -41,7 +41,7 @@ type Mutation {
   # Create user
   createUser(name: String!, email: String!): User!
 
-  # Delete user 
+  # Delete user
   deleteUser(userId: ID!): User!
 }
 
@@ -87,6 +87,7 @@ type Like {
   id: ID!
   post: BlogPost!
   user: User!
+  count: Int!
 }
 
 scalar DateTime
