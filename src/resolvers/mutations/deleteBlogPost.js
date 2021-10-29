@@ -1,8 +1,10 @@
 const deleteBlogPost = {
   description: 'Delete blog post',
-  resolve: () => {
-    // TODO implement deleteBlogPost
-    return null
+  resolve: async (parent, args, { models }) => {
+    const postToDelete = await models.BlogPost.deleteOne({
+      _id: args.blogPostId,
+    })
+    return postToDelete
   },
 }
 
