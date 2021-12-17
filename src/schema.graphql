@@ -33,7 +33,7 @@ type Mutation {
   unlikeBlogPost(blogPostId: ID!): Like!
 
   # Comment on blog
-  comment(blogPostId: ID!): Comment!
+  comment(blogPostId: ID!, message: String!): Comment!
 
   # Delete comment on blog
   deleteComment(commentId: ID!): Comment!
@@ -60,7 +60,7 @@ type BlogPost {
   postText: String!
   postedBy: User!
   comments: [Comment!]!
-  likes: Like!
+  likes: [Like!]!
   createdAt: DateTime
 }
 
