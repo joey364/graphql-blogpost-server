@@ -1,18 +1,27 @@
 {
- "name": "graphql-blogpost-server",
- "version": "1.0.0",
- "main": "index.js",
- "license": "MIT",
- "scripts": {
-  "dev": "nodemon src/index.js"
- },
- "dependencies": {
-  "apollo-server": "^3.4.0",
-  "dotenv": "^10.0.0",
-  "graphql": "^15.7.1",
-  "mongoose": "^6.0.12"
- },
- "devDependencies": {
-  "nodemon": "^2.0.14"
- }
+  "name": "graphql-blogpost-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "lint": "eslint --fix src/",
+    "format": "prettier -w -c ./.prettierrc src/"
+  },
+  "dependencies": {
+    "apollo-server": "^3.4.0",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.7.1",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "eslint": "^8.4.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.14"
+  }
 }
