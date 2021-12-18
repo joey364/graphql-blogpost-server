@@ -9,7 +9,7 @@ const post = {
 const postedBy = {
   description: 'Return post being replied to',
   resolve: async (parent, _args, { models }) => {
-    const postAuthor = await models.User.find({ _id: parent._id })
+    const postAuthor = await models.User.find({ _id: parent.postedBy._id })
     return postAuthor
   },
 }

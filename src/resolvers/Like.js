@@ -9,7 +9,7 @@ const post = {
 const user = {
   description: 'Return info on user',
   resolve: async (parent, _args, { models }) => {
-    const userLikeInfo = models.User.find({ _id: parent._id })
+    const userLikeInfo = models.User.find({ _id: parent.postedBy._id })
     return userLikeInfo
   },
 }
