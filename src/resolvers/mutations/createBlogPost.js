@@ -1,12 +1,10 @@
 const createBlogPost = {
   description: 'Create a blog post',
-  resolve: async (parent, args, { models }) => {
-    //get user id
-    const user = await models.User.findOne({ name: 'Alex' })
+  resolve: async (parent, args, { models, userId }) => {
     // create new post
     const newPost = new models.BlogPost({
       postText: args.postText,
-      postedBy: user._id,
+      postedBy: userId,
     })
     await newPost.save()
 

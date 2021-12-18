@@ -1,8 +1,15 @@
 const replyComment = {
   description: 'Reply to a comment',
-  resolve: () => {
+  resolve: async (parent, args, { models, userId }) => {
     // TODO implement replyComment
-    return null
+    const newReply = new models.Reply({
+      post: args.blogPostId,
+      message: args.message,
+      postedBy: userId,
+    })
+    await newReply.save()
+
+    return newReply
   },
 }
 

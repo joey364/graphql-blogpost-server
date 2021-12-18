@@ -1,8 +1,9 @@
 const unlikeBlogPost = {
   description: 'Unlike a post',
-  resolve: () => {
+  resolve: async (_parent, args, { models }) => {
     // TODO implement unlikePost
-    return null
+    const postToUnlike = await models.Like.deleteOne({ _id: args.id })
+    return postToUnlike
   },
 }
 
