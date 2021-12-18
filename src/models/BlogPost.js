@@ -1,17 +1,23 @@
 const mongoose = require('mongoose')
 
-const BlogPostSchema = new mongoose.Schema({
+const { Schema, ObjectId } = mongoose
+
+const BlogPostSchema = new Schema({
   postText: {
     type: String,
     required: true,
   },
   postedBy: {
-    type: mongoose.ObjectId,
+    type: ObjectId,
     ref: 'User',
   },
   comments: {
-    type: [mongoose.ObjectId],
+    type: [ObjectId],
     ref: 'Comment',
+  },
+  likes: {
+    type: [ObjectId],
+    ref: 'Like',
   },
   createdAt: {
     type: Date,
