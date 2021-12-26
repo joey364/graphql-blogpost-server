@@ -85,7 +85,6 @@ type Like {
   id: ID!
   post: BlogPost!
   user: User!
-  count: Int!
 }
 
 scalar DateTime
