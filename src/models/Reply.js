@@ -1,16 +1,18 @@
 const mongoose = require('mongoose')
 
-const ReplySchema = new mongoose.Schema({
-  post: {
-    type: mongoose.ObjectId,
-    ref: 'BlogPost',
+const { Schema, ObjectId } = mongoose
+
+const ReplySchema = new Schema({
+  comment: {
+    type: ObjectId,
+    ref: 'Comment',
   },
   message: {
     type: String,
     required: true,
   },
   postedBy: {
-    type: mongoose.ObjectId,
+    type: ObjectId,
     ref: 'User',
   },
   createdAt: {
