@@ -2,7 +2,7 @@ const likeBlogPost = {
   description: 'Like a post',
   resolve: async (parent, args, { models, userId }) => {
     const userLike = await models.Like.findOne({
-      postId: args.blogPostId,
+      post: args.blogPostId,
       user: await userId,
     })
 
@@ -11,7 +11,7 @@ const likeBlogPost = {
     }
 
     const newLike = new models.Like({
-      postId: args.blogPostId,
+      post: args.blogPostId,
       user: await userId,
     })
     await newLike.save()
