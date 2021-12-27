@@ -9,7 +9,6 @@ const postedBy = {
 const comments = {
   description: 'Return comments for post',
   resolve: async (parent, _args, { models }) => {
-    // console.log('BlogPost parent', parent)
     const postComments = await models.Comment.find({
       _id: parent.comments,
     })
@@ -20,7 +19,7 @@ const comments = {
 const likes = {
   description: 'Return likes for post',
   resolve: async (parent, _args, { models }) => {
-    const postLikes = await models.Like.find({ _id: parent.likes })
+    const postLikes = await models.Like.find({ post: parent._id })
     return postLikes
   },
 }
