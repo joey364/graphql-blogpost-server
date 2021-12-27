@@ -1,11 +1,11 @@
 const replyComment = {
-  description: 'Reply to a comment',
+  description: 'Reply a comment',
   resolve: async (parent, args, { models, userId }) => {
     // TODO implement replyComment
     const newReply = new models.Reply({
-      post: args.blogPostId,
+      comment: args.commentId,
       message: args.message,
-      postedBy: userId,
+      postedBy: await userId,
     })
     await newReply.save()
 
