@@ -76,7 +76,7 @@ type Comment {
 type Reply {
   id: ID!
   message: String!
-  post: BlogPost!
+  comment: Comment!
   postedBy: User!
   createdAt: DateTime
 }
