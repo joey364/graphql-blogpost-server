@@ -4,7 +4,7 @@ const createBlogPost = {
     // create new post
     const newPost = new models.BlogPost({
       postText: args.postText,
-      postedBy: userId,
+      postedBy: await userId,
     })
     await newPost.save()
 
