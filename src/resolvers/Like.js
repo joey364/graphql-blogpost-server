@@ -1,7 +1,7 @@
 const post = {
   description: 'Return info on post',
-  resolve: async (parent, args, { models }) => {
-    const postParent = models.BlogPost.find({ _id: parent._id })
+  resolve: async (parent, _args, { models }) => {
+    const postParent = models.BlogPost.findOne({ _id: parent.post })
     return postParent
   },
 }
@@ -9,7 +9,7 @@ const post = {
 const user = {
   description: 'Return info on user',
   resolve: async (parent, _args, { models }) => {
-    const userLikeInfo = models.User.find({ _id: parent.postedBy._id })
+    const userLikeInfo = models.User.findOne({ _id: parent.user })
     return userLikeInfo
   },
 }
