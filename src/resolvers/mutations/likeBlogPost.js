@@ -1,18 +1,22 @@
 const likeBlogPost = {
   description: 'Like a post',
   resolve: async (parent, args, { models, userId }) => {
-    // TODO: implement likePost
-    const newLike = new models.Like({
-      post: args.blogPostId,
-      user: userId,
+    const userLike = await models.Like.findOne({
+      postId: args.blogPostId,
+      user: await userId,
     })
 
-    await newLike.save()
-    const likeCount = await models.Like.find({ _id: args.blogPostId }).count()
-    return {
-      newLike,
-      likeCount,
+    if (userLike) {
+      throw new Error('You have already liked this post')
     }
+
+    const newLike = new models.Like({
+      postId: args.blogPostId,
+      user: await userId,
+    })
+    await newLike.save()
+
+    return newLike
   },
 }
 
