@@ -1,7 +1,6 @@
 const comment = {
   description: 'Comment on post',
   resolve: async (parent, args, { models, userId }) => {
-    console.log(args.blogPostId)
     const newComment = new models.Comment({
       post: args.blogPostId,
       message: args.message,
